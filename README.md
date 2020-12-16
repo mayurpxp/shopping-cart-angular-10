@@ -17,7 +17,7 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 ## Images
 
 Product
-![Product](src/assets/images/img1.jpg)
+![Product](src/assets/images/img1.JPG)
 
 Cart
-![Product](src/assets/images/img2.jpg)
+![Product](src/assets/images/img2.JPG)
