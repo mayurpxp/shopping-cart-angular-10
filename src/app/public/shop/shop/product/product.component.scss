@@ -1,0 +1,7 @@
+.product-wrapper {
+  & .card {
+    & .card-body {
+      padding: 0.5rem;
+    }
+  }
+}

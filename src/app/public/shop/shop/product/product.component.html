@@ -10,11 +10,21 @@
         alt="{{ item.name }}"
       />
       <div class="card-body">
-        <h3>{{ item.name }}</h3>
-        <p>Price &#8377;{{ item.price }}</p>
-        <button class="btn btn-primary" role="button" (click)="onAddCart(item)">
-          Add to Cart
-        </button>
+        <h5>{{ item.name }}</h5>
+        <div class="row">
+          <div class="col-sm-6">
+            <p>Price &#8377;{{ item.price }}</p>
+          </div>
+          <div class="col-sm-6">
+            <button
+              class="btn btn-outline-success btn-sm float-right"
+              role="button"
+              (click)="onAddCart(item)"
+            >
+              Add to Cart
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
