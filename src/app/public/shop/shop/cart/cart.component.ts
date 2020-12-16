@@ -9,10 +9,10 @@ import { CartItem } from '../../types/cart.model';
 export class CartComponent implements OnInit {
   @Input() cartTotal: number;
   @Input() cartItems: CartItem[];
-  @Output() cartItemDeleted = new EventEmitter<{
+  @Output() cartItemChanged = new EventEmitter<{
     productId: number;
   }>();
-  @Output() cartItemChanged = new EventEmitter<{
+  @Output() cartItemDeleted = new EventEmitter<{
     productId: number;
   }>();
 
@@ -22,14 +22,14 @@ export class CartComponent implements OnInit {
 
   ngOnInit() {}
 
-  onCartItemDeleted(productData: { productId: number }) {
-    this.cartItemDeleted.emit({
+  onCartItemChanged(productData: { productId: number }) {
+    this.cartItemChanged.emit({
       productId: productData.productId,
     });
   }
 
-  onCartItemChanged(productData: { productId: number }) {
-    this.cartItemChanged.emit({
+  onCartItemDeleted(productData: { productId: number }) {
+    this.cartItemDeleted.emit({
       productId: productData.productId,
     });
   }
