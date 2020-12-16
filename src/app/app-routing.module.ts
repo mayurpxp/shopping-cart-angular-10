@@ -8,6 +8,12 @@ const routes: Routes = [
     loadChildren: () =>
       import('./public/shop/shop.module').then((m) => m.ShopModule),
   },
+  {
+    path: 'cart',
+    loadChildren: () =>
+      import('./public/cart/cart.module').then((m) => m.CartModule),
+  },
+  { path: '**', redirectTo: '/shop' },
 ];
 
 @NgModule({
