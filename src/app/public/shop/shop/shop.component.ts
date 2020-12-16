@@ -7,34 +7,34 @@ import { CartItem } from '../types/cart.model';
   styleUrls: ['./shop.component.scss'],
 })
 export class ShopComponent implements OnInit {
-  cartTotal: number = 0;
+  cartTotal = 0;
   cartItems: CartItem[] = [];
 
   constructor() {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.updateCartTotal();
   }
 
-  onCartItemDeleted(productData: { productId: number }) {
+  onDeleteCartItem(productData: { productId: number }): void {
     const index = this.cartItems.findIndex(
-      (elem) => elem.id == productData.productId
+      (elem) => elem.id === productData.productId
     );
     this.cartItems.splice(index, 1);
     this.updateCartTotal();
   }
 
-  onCartItemChanged(productData: { productId: number }) {
+  onChangeCartItem(productData: { productId: number }): void {
     this.updateCartTotal();
   }
 
-  onCartUpdated(productData: {
+  onAddCart(productData: {
     productId: number;
     productName: string;
     productPrice: number;
-  }) {
+  }): void {
     const index = this.cartItems.findIndex(
-      (elem) => elem.id == productData.productId
+      (elem) => elem.id === productData.productId
     );
     if (index === -1) {
       this.cartItems.push({
@@ -55,8 +55,7 @@ export class ShopComponent implements OnInit {
     this.updateCartTotal();
   }
 
-  updateCartTotal() {
-    //the code to update the total property of the cart
+  updateCartTotal(): void {
     let total = 0;
     this.cartItems.map((elem) => (total = total + elem.quantity * elem.price));
     this.cartTotal = total;

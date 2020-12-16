@@ -11,12 +11,8 @@
       />
       <div class="card-body">
         <h3>{{ item.name }}</h3>
-        <p>Price {{ item.price }} USD</p>
-        <button
-          class="btn btn-primary"
-          id="{{ item.id }}"
-          (click)="onCartUpdated($event)"
-        >
+        <p>Price &#8377;{{ item.price }}</p>
+        <button class="btn btn-primary" role="button" (click)="onAddCart(item)">
           Add to Cart
         </button>
       </div>

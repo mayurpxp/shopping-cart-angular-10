@@ -42,15 +42,13 @@ export class ProductComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit(): void {}
 
-  onCartUpdated(event) {
-    const id = event.target.getAttribute('id');
-    const index = this.productItem.findIndex((elem) => elem.id == id);
+  onAddCart(item: ProductItem): void {
     this.cartUpdated.emit({
-      productId: this.productItem[index].id,
-      productName: this.productItem[index].name,
-      productPrice: this.productItem[index].price,
+      productId: item.id,
+      productName: item.name,
+      productPrice: item.price,
     });
   }
 }

@@ -2,10 +2,10 @@
   <app-cart
     [cartItems]="cartItems"
     [cartTotal]="cartTotal"
-    (cartItemDeleted)="onCartItemDeleted($event)"
-    (cartItemChanged)="onCartItemChanged($event)"
+    (deleteCartItem)="onDeleteCartItem($event)"
+    (changeCartItem)="onChangeCartItem($event)"
   >
   </app-cart>
 
-  <app-product (cartUpdated)="onCartUpdated($event)"></app-product>
+  <app-product (cartUpdated)="onAddCart($event)"></app-product>
 </div>

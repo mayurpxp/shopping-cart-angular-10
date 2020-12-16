@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CartItem } from '../../types/cart.model';
+import { ProductItem } from '../../types/product.model';
 
 @Component({
   selector: 'app-cart',
@@ -9,28 +10,28 @@ import { CartItem } from '../../types/cart.model';
 export class CartComponent implements OnInit {
   @Input() cartTotal: number;
   @Input() cartItems: CartItem[];
-  @Output() cartItemChanged = new EventEmitter<{
+  @Output() changeCartItem = new EventEmitter<{
     productId: number;
   }>();
-  @Output() cartItemDeleted = new EventEmitter<{
+  @Output() deleteCartItem = new EventEmitter<{
     productId: number;
   }>();
 
-  total: number = 0;
+  total = 0;
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit(): void {}
 
-  onCartItemChanged(productData: { productId: number }) {
-    this.cartItemChanged.emit({
-      productId: productData.productId,
+  onChangeCartItem(item: ProductItem): void {
+    this.changeCartItem.emit({
+      productId: item.id,
     });
   }
 
-  onCartItemDeleted(productData: { productId: number }) {
-    this.cartItemDeleted.emit({
-      productId: productData.productId,
+  onDeleteCartItem(item: ProductItem): void {
+    this.deleteCartItem.emit({
+      productId: item.id,
     });
   }
 }

@@ -1,11 +1,11 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th scope="col">Item</th>
-      <th scope="col">Price</th>
-      <th scope="col">Quantity</th>
-      <th scope="col">Total Price</th>
-      <th scope="col"></th>
+      <th scope="col" style="width: 50%">Item</th>
+      <th scope="col" style="width: 15%">Price</th>
+      <th scope="col" style="width: 10%">Quantity</th>
+      <th scope="col" style="width: 15%">Total Price</th>
+      <th scope="col" style="width: 10%"></th>
     </tr>
   </thead>
   <tbody>
@@ -13,7 +13,7 @@
       <td>
         {{ item.name }}
       </td>
-      <td>{{ item.price }} Rs.</td>
+      <td>&#8377;{{ item.price }}</td>
       <td>
         <input
           type="number"
@@ -21,19 +21,19 @@
           min="1"
           id="{{ item.id }}"
           [(ngModel)]="item.quantity"
-          (change)="onCartItemChanged($event)"
+          (change)="onChangeCartItem(item)"
         />
       </td>
-      <td>{{ item.quantity * item.price }} USD</td>
+      <td>&#8377; {{ item.quantity * item.price }}</td>
       <td>
         <button
           type="button"
           class="btn btn-outline-danger btn-icon"
           aria-label="Left Align"
           id="{{ item.id }}"
-          (click)="onCartItemDeleted($event)"
+          (click)="onDeleteCartItem(item)"
         >
-          X
+          Remove
         </button>
       </td>
     </tr>
