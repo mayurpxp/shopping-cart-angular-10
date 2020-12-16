@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ProductService } from '../../product-service/product.service';
+import { Component, OnInit } from '@angular/core';
+import { ProductService } from '../../../../shared/services/product-service/product.service';
 import { CartItem } from '../../types/cart.model';
 import { ProductItem } from '../../types/product.model';
 
@@ -9,15 +9,8 @@ import { ProductItem } from '../../types/product.model';
   styleUrls: ['./cart.component.scss'],
 })
 export class CartComponent implements OnInit {
-  @Input() cartTotal: number;
-  @Input() cartItems: CartItem[];
-  @Output() changeCartItem = new EventEmitter<{
-    productId: number;
-  }>();
-  @Output() deleteCartItem = new EventEmitter<{
-    productId: number;
-  }>();
-
+  cartTotal: number;
+  cartItems: CartItem[];
   total = 0;
 
   constructor(private productService: ProductService) {}
