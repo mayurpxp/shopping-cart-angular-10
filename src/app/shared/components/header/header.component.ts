@@ -1,4 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterContentChecked,
+  Component,
+  OnChanges,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { ProductService } from 'src/app/public/shop/product-service/product.service';
 import { ShopComponent } from 'src/app/public/shop/shop/shop.component';
 
@@ -8,13 +14,13 @@ import { ShopComponent } from 'src/app/public/shop/shop/shop.component';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  count = 0;
+  count;
 
   constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
-    this.productService
-      .getCartItems()
-      .subscribe((items) => (this.count = items.length));
+    this.productService.getCartItems().subscribe((items) => {
+      this.count = items.reduce((a, b) => a + (b['quantity'] || 0), 0);
+    });
   }
 }
