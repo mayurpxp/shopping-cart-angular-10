@@ -16,27 +16,27 @@ export class ProductComponent implements OnInit {
   productItem: ProductItem[] = [
     new ProductItem(
       1,
-      'Laptop',
-      750,
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5FpRKXeVbKWa1Wo75eOMva5FrE7QCREZgJj8iWNRZf9me2BcCRg'
+      'Google pixel',
+      50000,
+      'https://www.free-mockup.com/wp-content/uploads/edd/2018/04/Google-Pixel-2-Mockup-Phone-PSD.jpg'
     ),
     new ProductItem(
       2,
-      'Tesla X',
-      133000,
-      'http://st.motortrend.com/uploads/sites/5/2016/03/2016-Tesla-Model-X-P90D-front-three-quarter-doors-open.jpg'
+      'Fairphone',
+      25000,
+      'https://www.slashgear.com/wp-content/uploads/2020/04/fairphone-3-e-1280x720.jpg'
     ),
     new ProductItem(
       3,
-      'Tesla S',
+      'iPhone',
       102000,
-      'https://media.ed.edmunds-media.com/tesla/model-s/2016/oem/2016_tesla_model-s_sedan_p90d_fq_oem_2_1280.jpg'
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeKh5x0vW9gSdLsYfZmZjbpa8Aves0zT99WA&usqp=CAU'
     ),
     new ProductItem(
       4,
-      'Tesla Y',
+      'Moto',
       35000,
-      'https://www.tesla.com/sites/default/files/images/blogs/models_blog_post.jpg'
+      'https://m-cdn.phonearena.com/images/article/128606-two_1200/Heres-how-you-can-get-the-Moto-G-Stylus-and-G-Power-for-free-this-Black-Friday.jpg'
     ),
   ];
 

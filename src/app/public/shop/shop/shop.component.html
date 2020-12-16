@@ -1,11 +1,5 @@
 <div class="container">
-  <app-cart
-    [cartItems]="cartItems"
-    [cartTotal]="cartTotal"
-    (deleteCartItem)="onDeleteCartItem($event)"
-    (changeCartItem)="onChangeCartItem($event)"
-  >
-  </app-cart>
-
-  <app-product (cartUpdated)="onAddCart($event)"></app-product>
+  <div class="my-4">
+    <app-product (cartUpdated)="onAddCart($event)"></app-product>
+  </div>
 </div>

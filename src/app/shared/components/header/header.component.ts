@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ProductService } from 'src/app/public/shop/product-service/product.service';
+import { ShopComponent } from 'src/app/public/shop/shop/shop.component';
 
 @Component({
   selector: 'app-header',
@@ -6,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  constructor() {}
+  count = 0;
 
-  ngOnInit(): void {}
+  constructor(private productService: ProductService) {}
+
+  ngOnInit(): void {
+    this.productService
+      .getCartItems()
+      .subscribe((items) => (this.count = items.length));
+  }
 }

@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ProductService } from '../../product-service/product.service';
 import { CartItem } from '../../types/cart.model';
 import { ProductItem } from '../../types/product.model';
 
@@ -19,19 +20,27 @@ export class CartComponent implements OnInit {
 
   total = 0;
 
-  constructor() {}
+  constructor(private productService: ProductService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.productService
+      .getCartItems()
+      .subscribe((items) => (this.cartItems = items));
+    this.cartTotal = this.productService.cartTotal;
+  }
 
-  onChangeCartItem(item: ProductItem): void {
-    this.changeCartItem.emit({
-      productId: item.id,
-    });
+  updateCartTotal(): void {
+    let total = 0;
+    this.cartItems.map((elem) => (total = total + elem.quantity * elem.price));
+    this.cartTotal = total;
+
+    this.productService.setCartItems(this.cartItems);
+    this.productService.cartTotal = total;
   }
 
   onDeleteCartItem(item: ProductItem): void {
-    this.deleteCartItem.emit({
-      productId: item.id,
-    });
+    const index = this.cartItems.findIndex((elem) => elem.id === item.id);
+    this.cartItems.splice(index, 1);
+    this.updateCartTotal();
   }
 }

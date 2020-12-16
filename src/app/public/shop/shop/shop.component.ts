@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductService } from '../product-service/product.service';
 import { CartItem } from '../types/cart.model';
 
 @Component({
@@ -7,21 +8,15 @@ import { CartItem } from '../types/cart.model';
   styleUrls: ['./shop.component.scss'],
 })
 export class ShopComponent implements OnInit {
-  cartTotal = 0;
+  cartTotal = this.productService.cartTotal;
   cartItems: CartItem[] = [];
 
-  constructor() {}
+  constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
-    this.updateCartTotal();
-  }
-
-  onDeleteCartItem(productData: { productId: number }): void {
-    const index = this.cartItems.findIndex(
-      (elem) => elem.id === productData.productId
-    );
-    this.cartItems.splice(index, 1);
-    this.updateCartTotal();
+    this.productService
+      .getCartItems()
+      .subscribe((items) => (this.cartItems = items));
   }
 
   onChangeCartItem(productData: { productId: number }): void {
@@ -53,11 +48,16 @@ export class ShopComponent implements OnInit {
         this.cartItems[index].price * this.cartItems[index].quantity;
     }
     this.updateCartTotal();
+
+    this.productService.setCartItems(this.cartItems);
   }
 
   updateCartTotal(): void {
     let total = 0;
     this.cartItems.map((elem) => (total = total + elem.quantity * elem.price));
     this.cartTotal = total;
+
+    this.productService.setCartItems(this.cartItems);
+    this.productService.cartTotal = total;
   }
 }
